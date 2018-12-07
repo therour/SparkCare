@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "267466481680",
+    "firebase_url": "https://sparkcare-5e2bb.firebaseio.com",
+    "project_id": "sparkcare-5e2bb",
+    "storage_bucket": "sparkcare-5e2bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267466481680:android:559b1063ea9e7790",
+        "android_client_info": {
+          "package_name": "id.ac.uii.fit.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267466481680-tnididav61ek4vdoljsmqk2o9894f2g3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.ac.uii.fit.project",
+            "certificate_hash": "ffe108a1279520eed5fe51ee70b9f475b1d7778e"
+          }
+        },
+        {
+          "client_id": "267466481680-rjbs6sh19vrqesv9jm5hmpfsbl5pv1nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUvTBuZZjBDwkboOqAVr_2b4d502sPZkQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267466481680-rjbs6sh19vrqesv9jm5hmpfsbl5pv1nl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
