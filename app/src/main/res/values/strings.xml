@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">SparkCare</string>
 
     <string name="masuk">Masuk dengan Google</string>
+    <string name="keluar">Keluar</string>
     <string name="welcome">Welcome To SparkCare!</string>
     <string name="title_activity_firebase_ui">FirebaseUIActivity</string>
 </resources>

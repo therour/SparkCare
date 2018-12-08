@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/animation_list">
+    android:background="@drawable/animation_list"
+    android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
     <TextView
         android:id="@+id/helloUser"
@@ -13,4 +14,5 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="33dp"
         android:textSize="24sp" />
+
 </RelativeLayout>
