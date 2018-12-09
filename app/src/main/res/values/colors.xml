@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorSecondary">#EBECF1</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="purple_500">#9C27B0</color>
@@ -16,4 +17,5 @@
 
     <color name="colorYes">#04ef00</color>
     <color name="colorNo">#ff0004</color>
+    <color name="colorBlack">#0B1215</color>
 </resources>
