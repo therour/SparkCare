@@ -13,4 +13,7 @@
 
     <color name="actionBar">@color/colorAccent</color>
     <color name="actionBarTitle">#FFFFFF</color>
+
+    <color name="colorYes">#04ef00</color>
+    <color name="colorNo">#ff0004</color>
 </resources>

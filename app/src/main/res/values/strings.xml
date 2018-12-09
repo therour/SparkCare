@@ -5,4 +5,7 @@
     <string name="keluar">Keluar</string>
     <string name="welcome">Welcome To SparkCare!</string>
     <string name="title_activity_firebase_ui">FirebaseUIActivity</string>
+    <string name="start">Mulai Diagnosa</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
