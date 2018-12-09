@@ -6,6 +6,6 @@
     <string name="welcome">SPARK</string>
     <string name="title_activity_firebase_ui">FirebaseUIActivity</string>
     <string name="start">Mulai Diagnosa</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
 </resources>
