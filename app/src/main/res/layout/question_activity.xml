@@ -15,7 +15,7 @@
         android:textSize="30sp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/answerLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.4"
@@ -32,7 +32,8 @@
             android:gravity="center"
             android:text="@string/yes"
             android:textColor="@android:color/white"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:onClick="actionYes"/>
 
         <Button
             android:id="@+id/textView"
@@ -45,8 +46,15 @@
             android:gravity="center"
             android:text="@string/no"
             android:textColor="@android:color/white"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:onClick="actionNo"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/yourAnswerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_answer" />
 
 
 </LinearLayout>
