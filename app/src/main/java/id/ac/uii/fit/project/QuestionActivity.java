@@ -223,7 +223,7 @@ public class QuestionActivity extends BaseActivity {
 
                         disableAction(true,
                                 "Penyakit anda adalah " + namaPenyakit +
-                                        "dengan nilai kemiripan " + (nilaiPenyakit * 100)
+                                        "\n dengan nilai kemiripan " + (nilaiPenyakit * 100) + " persen"
                         );
                         answerLinearLayout.setVisibility(View.GONE);
 
