@@ -30,6 +30,7 @@
     <style name="AppTheme.yesButton" parent="@android:style/Widget.Material.Button">
         <item name="android:background">@color/colorYes</item>
     </style>
+
     <style name="AppTheme.noButton" parent="@android:style/Widget.Material.Button">
         <item name="android:background">@color/colorNo</item>
     </style>
