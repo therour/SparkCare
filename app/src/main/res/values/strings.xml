@@ -9,6 +9,7 @@
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="your_answer">Jawaban Anda</string>
+    <string name="loading">Loading. . .</string>
     <string name="back">Kembali</string>
     <string name="title_activity_view_my_answer">ViewMyAnswerActivity</string>
     <string name="large_text">
