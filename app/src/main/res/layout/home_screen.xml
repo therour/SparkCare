@@ -23,46 +23,86 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="280dp"
         android:background="#C9D5DA">
 
         <ImageView
             android:id="@+id/icCheckCircle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="65dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="45dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/home_button"
             app:srcCompat="@drawable/stetoskop"/>
+
+        <TextView
+            android:id="@+id/nameView"
+            android:fontFamily="@font/roboto"
+            android:text="Diagnosa"
+            android:textSize="24sp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="20dp"/>
         <ImageView
             android:id="@+id/icCheckCircle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="145dp"
-            android:layout_marginTop="65dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="45dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/home_button" />
+            app:srcCompat="@drawable/detail" />
+        <TextView
+            android:id="@+id/nameView"
+            android:fontFamily="@font/roboto"
+            android:text="Detail"
+            android:textSize="24sp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="164dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="20dp"/>
+        <TextView
+            android:id="@+id/nameView"
+            android:fontFamily="@font/roboto"
+            android:text="Penyakit"
+            android:textSize="24sp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="149dp"
+            android:layout_marginTop="172dp"
+            android:layout_marginBottom="20dp"/>
         <ImageView
             android:id="@+id/icCheckCircle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="270dp"
-            android:layout_marginTop="65dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="235dp"
+            android:layout_marginTop="45dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/home_button" />
+            app:srcCompat="@drawable/aboutus" />
+        <TextView
+            android:id="@+id/nameView"
+            android:fontFamily="@font/roboto"
+            android:text="About Us"
+            android:textSize="24sp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="248dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="20dp"/>
     </RelativeLayout>
 
-    <View
+   <!-- <View
         android:id="@+id/rectangle_4"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/rectangle_4" />
-
+-->
 
 </LinearLayout>
