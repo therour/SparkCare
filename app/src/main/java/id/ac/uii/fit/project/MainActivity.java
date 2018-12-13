@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void actionMulai(View view) {
-        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
+        Intent intent = new Intent(this, QuestionActivity.class);
         startActivity(intent);
     }
 }

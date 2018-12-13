@@ -71,7 +71,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/Allergies"
+            app:srcCompat="@drawable/allergies"
             android:layout_marginEnd="10dp"/>
 
         <TextView
