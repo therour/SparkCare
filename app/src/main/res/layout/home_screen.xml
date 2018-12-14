@@ -10,6 +10,8 @@
         android:id="@+id/rectangle_4"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:background="#B2D8D9" />
 
     <ImageView
@@ -25,29 +27,29 @@
         android:background="#C9D5DA">
 
         <ImageView
-            android:id="@+id/icCheckCircle1"
+            android:id="@+id/icCheckCircle"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="65dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
             app:srcCompat="@drawable/home_button"
-            />
+            app:srcCompat="@drawable/stetoskop"/>
         <ImageView
-            android:id="@+id/icCheckCircle2"
+            android:id="@+id/icCheckCircle"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="145dp"
+            android:layout_marginLeft="145dp"
             android:layout_marginTop="65dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
             app:srcCompat="@drawable/home_button" />
         <ImageView
-            android:id="@+id/icCheckCircle3"
+            android:id="@+id/icCheckCircle"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="270dp"
+            android:layout_marginLeft="270dp"
             android:layout_marginTop="65dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
@@ -55,9 +57,11 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/rectangle_5"
+        android:id="@+id/rectangle_4"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:background="@drawable/rectangle_4" />
 
 

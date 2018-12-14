@@ -55,7 +55,7 @@
     <LinearLayout
         android:id="@+id/answerLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="15dp"
         android:layout_weight="0.4"
         android:padding="5dp">
 
@@ -66,28 +66,14 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/yes_button"
+            android:background="@drawable/home_button"
             android:fontFamily="@font/roboto_mono"
             android:gravity="center"
             android:onClick="actionYes"
-            android:text="@string/yes"
+            android:text="Detail Penyakit"
             android:textColor="@android:color/white"
-            android:textSize="36sp" />
+            android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/textView"
-            style="@style/AppTheme.noButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/no_button"
-            android:fontFamily="@font/roboto_mono"
-            android:gravity="center"
-            android:onClick="actionNo"
-            android:text="@string/no"
-            android:textColor="@android:color/white"
-            android:textSize="36sp" />
     </LinearLayout>
 
 
