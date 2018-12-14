@@ -39,6 +39,7 @@
         android:layout_height="320dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:contentDescription="@string/desc"
         android:layout_marginTop="105dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
