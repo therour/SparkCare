@@ -101,6 +101,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_marginTop="25dp">
+
         <ImageView
             android:id="@+id/icCheckCircle"
             android:layout_width="30dp"
