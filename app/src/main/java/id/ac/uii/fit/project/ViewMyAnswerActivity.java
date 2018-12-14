@@ -1,10 +1,7 @@
 package id.ac.uii.fit.project;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 
@@ -18,7 +15,7 @@ public class ViewMyAnswerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_my_answer);
 
         ListView listViewAnswer = (ListView) findViewById(R.id.listViewAnswer);
-        ListViewAnswerAdapter listViewAdapter = new ListViewAnswerAdapter(this, QuestionActivity.answer);
+        ListViewAnswerAdapter listViewAdapter = new ListViewAnswerAdapter(this, DiagnosaActivity.answer);
         listViewAnswer.setAdapter(listViewAdapter);
     }
 

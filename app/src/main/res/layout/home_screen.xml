@@ -2,76 +2,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:orientation="vertical">
-
-    <View
-        android:id="@+id/rectangle_4"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#B2D8D9" />
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:background="#b2d8d9">
 
     <ImageView
-        android:id="@+id/icCheckCircle"
         android:layout_width="match_parent"
         android:layout_height="174dp"
-        android:contentDescription="@android:string/yes"
+        android:layout_marginTop="56dp"
+        android:contentDescription="@string/app_description"
         app:srcCompat="@drawable/dokter" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#C9D5DA">
+        android:layout_height="280dp"
+        android:background="#C9D5DA"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnMulai"
-            android:layout_width="300dp"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="118dp"
-            android:background="@drawable/my_button"
-            android:fontFamily="@font/roboto"
-            android:onClick="actionMulai"
-            android:text="@string/start">
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:onClick="actionPenyakit">
 
-        </Button>
+            <ImageView
+                android:id="@+id/btnPenyakit"
+                android:layout_width="match_parent"
+                android:layout_height="116dp"
+                android:contentDescription="@android:string/yes"
+                app:srcCompat="@drawable/detail" />
 
-        <ImageView
-            android:id="@+id/icCheckCircle1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/home_button" />
-        <ImageView
-            android:id="@+id/icCheckCircle2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="145dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/home_button" />
-        <ImageView
-            android:id="@+id/icCheckCircle3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="270dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/home_button" />
-    </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/penyakit"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
 
-    <View
-        android:id="@+id/rectangle_5"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/rectangle_4" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:onClick="actionDiagnosa">
 
+            <ImageView
+                android:id="@+id/btnDiagnosa"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:contentDescription="@android:string/yes"
+                app:srcCompat="@drawable/stetoskop" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/diagnosa"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:onClick="actionAboutUs">
+
+            <ImageView
+                android:id="@+id/btnAboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:contentDescription="@android:string/yes"
+                app:srcCompat="@drawable/aboutus" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/aboutus"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -23,7 +23,7 @@
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/roboto_mono"
             android:gravity="center_vertical"
-            android:onClick="actionBack"
+            android:onClick="actionBackToQuestion"
             android:text="@string/back" />
     </RelativeLayout>
 
