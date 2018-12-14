@@ -10,8 +10,6 @@
         android:id="@+id/rectangle_4"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:background="#B2D8D9" />
 
     <ImageView
@@ -26,30 +24,43 @@
         android:layout_height="match_parent"
         android:background="#C9D5DA">
 
+        <Button
+            android:id="@+id/btnMulai"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="118dp"
+            android:background="@drawable/my_button"
+            android:fontFamily="@font/roboto"
+            android:onClick="actionMulai"
+            android:text="@string/start">
+
+        </Button>
+
         <ImageView
-            android:id="@+id/icCheckCircle"
+            android:id="@+id/icCheckCircle1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@android:string/yes"
-            app:srcCompat="@drawable/home_button"
-            app:srcCompat="@drawable/stetoskop"/>
-        <ImageView
-            android:id="@+id/icCheckCircle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="145dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="65dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
             app:srcCompat="@drawable/home_button" />
         <ImageView
-            android:id="@+id/icCheckCircle"
+            android:id="@+id/icCheckCircle2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="270dp"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@android:string/yes"
+            app:srcCompat="@drawable/home_button" />
+        <ImageView
+            android:id="@+id/icCheckCircle3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="270dp"
             android:layout_marginTop="65dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@android:string/yes"
@@ -57,11 +68,9 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/rectangle_4"
+        android:id="@+id/rectangle_5"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:background="@drawable/rectangle_4" />
 
 

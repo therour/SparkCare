@@ -56,7 +56,7 @@ public class BaseActivity extends AppCompatActivity {
             AuthService.setUser(user);
         }
         else  {
-            Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent loginIntent = new Intent(getApplicationContext(), SplashScreen.class);
             startActivity(loginIntent);
             finish();
         }
