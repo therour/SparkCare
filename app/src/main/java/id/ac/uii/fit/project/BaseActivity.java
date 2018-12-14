@@ -2,12 +2,10 @@ package id.ac.uii.fit.project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,7 +54,7 @@ public class BaseActivity extends AppCompatActivity {
             AuthService.setUser(user);
         }
         else  {
-            Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent loginIntent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(loginIntent);
             finish();
         }
@@ -64,9 +62,5 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-    }
-
-    protected void showSnackBar(String message) {
-        //
     }
 }
