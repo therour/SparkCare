@@ -5,36 +5,23 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.functions.FirebaseFunctions;
-import com.google.firebase.functions.FirebaseFunctionsException;
-import com.google.firebase.functions.HttpsCallableResult;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import id.ac.uii.fit.project.models.Gejala;
-import id.ac.uii.fit.project.services.DatabaseService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -45,10 +32,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class QuestionActivity extends BaseActivity {
+public class DiagnosaActivity extends BaseActivity {
 
     private DatabaseReference db;
-    private List<Gejala> listGejala = new ArrayList<>();
+    private List<Gejala> listGejala;
     private boolean isLoading;
     private int currentQuestion = 0;
     public static List<Gejala> answer = new ArrayList<>();
@@ -61,22 +48,22 @@ public class QuestionActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.question_activity);
+        setContentView(R.layout.diagnosa_activity);
         answer.clear();
         answerLinearLayout = findViewById(R.id.answerLinearLayout);
         questionText = (TextView) findViewById(R.id.question_text);
-
+        listGejala = Gejala.getCollection();
         showLoading(true);
 
-        db = DatabaseService.gejala();
+        db = FirebaseDatabase.getInstance().getReference("gejala");
+
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listGejala.clear();
+                Gejala.getCollection().clear();
                 for (DataSnapshot gejalaSnapshot: dataSnapshot.getChildren()) {
                     Gejala gejala = Gejala.parse(gejalaSnapshot);
-                    System.out.println(gejala.kode +": " + gejala.nama);
-                    listGejala.add(gejala);
+                    Gejala.getCollection().add(gejala);
                 }
                 showLoading(false);
             }
@@ -89,7 +76,7 @@ public class QuestionActivity extends BaseActivity {
     }
 
     public void actionMyAnswer(View view) {
-        Intent intent = new Intent(QuestionActivity.this, ViewMyAnswerActivity.class);
+        Intent intent = new Intent(this, ViewMyAnswerActivity.class);
         startActivity(intent);
     }
 

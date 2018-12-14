@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".QuestionActivity"
+    tools:context=".DiagnosaActivity"
     android:background="@drawable/background1"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:background="@color/colorSecondary">
 
         <TextView

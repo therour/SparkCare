@@ -115,4 +115,8 @@
 
     <string name="action_settings">Settings</string>
     <string name="backToQuestion">Kembali ke Pertanyaan</string>
+    <string name="app_description">Aplikasi diagnosa tulang</string>
+    <string name="diagnosa">Diagnosa</string>
+    <string name="aboutus">About Us</string>
+    <string name="penyakit">Penyakit</string>
 </resources>
