@@ -121,4 +121,13 @@
     <string name="penyakit">Penyakit</string>
     <string name="title_activity_penyakit">PenyakitActivity</string>
     <string name="cari_penyakit">Cari Penyakit</string>
+    <string name="team_name">SPARK TEAM</string>
+    <string name="backend_programmer">Backend Programmer</string>
+    <string name="nizom_name">Nizom Sidiq</string>
+    <string name="vebri_name">Vebri Satriadi</string>
+    <string name="arie_name">Arie Arifin</string>
+    <string name="frontend_programmer">Frontend Programmer</string>
+    <string name="aul_name">Aulia Rahman</string>
+    <string name="osas_name">Yoga Kosasih</string>
+    <string name="document">Document</string>
 </resources>
