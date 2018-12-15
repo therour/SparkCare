@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DiagnosaActivity"
+    android:background="@drawable/background1"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@color/colorSecondary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_chevron_left"
+            android:fontFamily="@font/roboto_mono"
+            android:gravity="center_vertical"
+            android:onClick="actionBack"
+            android:text="@string/back" />
+
+        <TextView
+            android:id="@+id/yourAnswerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:drawableEnd="@drawable/ic_chevron_right"
+            android:fontFamily="@font/roboto_mono"
+            android:gravity="center_vertical"
+            android:onClick="actionMyAnswer"
+            android:text="@string/your_answer" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_width="290dp"
+        android:layout_height="200dp"
+        android:layout_weight="0.6"
+        android:background="@color/colorSecondary"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:layout_marginTop="75dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="Loading..."
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/answerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="0.4"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/textView2"
+            style="@style/AppTheme.yesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/yes_button"
+            android:fontFamily="@font/roboto_mono"
+            android:gravity="center"
+            android:onClick="actionYes"
+            android:text="@string/yes"
+            android:textColor="@android:color/white"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/textView"
+            style="@style/AppTheme.noButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/no_button"
+            android:fontFamily="@font/roboto_mono"
+            android:gravity="center"
+            android:onClick="actionNo"
+            android:text="@string/no"
+            android:textColor="@android:color/white"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

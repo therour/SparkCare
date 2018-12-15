@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:background="#b2d8d9">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="174dp"
+        android:layout_marginTop="56dp"
+        android:contentDescription="@string/app_description"
+        app:srcCompat="@drawable/dokter" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="#C9D5DA"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:onClick="actionPenyakit">
+
+            <ImageView
+                android:id="@+id/btnPenyakit"
+                android:layout_width="match_parent"
+                android:layout_height="116dp"
+                android:contentDescription="@android:string/yes"
+                app:srcCompat="@drawable/detail" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/penyakit"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:onClick="actionDiagnosa">
+
+            <ImageView
+                android:id="@+id/btnDiagnosa"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:contentDescription="@android:string/yes"
+                app:srcCompat="@drawable/stetoskop" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/diagnosa"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:onClick="actionAboutUs">
+
+            <ImageView
+                android:id="@+id/btnAboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:contentDescription="@android:string/yes"
+                app:srcCompat="@drawable/aboutus" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/aboutus"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
