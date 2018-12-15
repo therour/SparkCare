@@ -53,26 +53,7 @@ public class DiagnosaActivity extends BaseActivity {
         answerLinearLayout = findViewById(R.id.answerLinearLayout);
         questionText = (TextView) findViewById(R.id.question_text);
         listGejala = Gejala.getCollection();
-        showLoading(true);
-
-        db = FirebaseDatabase.getInstance().getReference("gejala");
-
-        db.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Gejala.getCollection().clear();
-                for (DataSnapshot gejalaSnapshot: dataSnapshot.getChildren()) {
-                    Gejala gejala = Gejala.parse(gejalaSnapshot);
-                    Gejala.getCollection().add(gejala);
-                }
-                showLoading(false);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        showLoading(false);
     }
 
     public void actionMyAnswer(View view) {
@@ -127,10 +108,8 @@ public class DiagnosaActivity extends BaseActivity {
 
     private boolean isFinishedAction() {
         if (listGejala.size() <= ++currentQuestion) {
-//            disableAction(true, "SELESAI");
             showLoading(true);
             getResult(answer);
-//            finish();
             return true;
         } else {
             return false;

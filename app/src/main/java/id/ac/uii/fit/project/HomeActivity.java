@@ -13,7 +13,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void actionPenyakit(View view) {
-        Intent intent = new Intent(this, DiagnosaActivity.class);
+        Intent intent = new Intent(this, PenyakitActivity.class);
         startActivity(intent);
     }
 

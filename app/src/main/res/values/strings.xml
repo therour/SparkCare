@@ -119,4 +119,6 @@
     <string name="diagnosa">Diagnosa</string>
     <string name="aboutus">About Us</string>
     <string name="penyakit">Penyakit</string>
+    <string name="title_activity_penyakit">PenyakitActivity</string>
+    <string name="cari_penyakit">Cari Penyakit</string>
 </resources>

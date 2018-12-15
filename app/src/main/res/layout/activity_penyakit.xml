@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:background="@color/backgroundTheme">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/backgroundTheme"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            app:srcCompat="@android:drawable/ic_menu_search"
+            android:contentDescription="@string/desc" />
+    <EditText
+        android:id="@+id/editTxtCariPenyakit"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:hint="@string/cari_penyakit"
+        android:inputType="text"
+        android:nextFocusUp="@+id/editTxtCariPenyakit"
+        android:nextFocusLeft="@+id/editTxtCariPenyakit"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/listViewPenyakit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#C9D5DA"/>
+</LinearLayout>
