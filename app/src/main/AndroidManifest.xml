@@ -32,8 +32,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PenyakitActivity"
-            android:label="@string/title_activity_penyakit"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AboutUsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
