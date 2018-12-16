@@ -29,13 +29,13 @@ public class DatabaseService {
             for (DataSnapshot gejalaSnapshot : gejalaSnapshots.getChildren()) {
                 Gejala.getCollection().add(Gejala.parse(gejalaSnapshot));
             }
-            DataSnapshot solusiSnapshots = dataSnapshot.child("solusi");
-            if (Solusi.getCollection().size() != solusiSnapshots.getChildrenCount()) {
-                Solusi.getCollection().clear();
-            }
-            for (DataSnapshot solusiSnapshot : solusiSnapshots.getChildren()) {
-                Solusi.put(Solusi.parse(solusiSnapshot));
-            }
+//            DataSnapshot solusiSnapshots = dataSnapshot.child("solusi");
+//            if (Solusi.getCollection().size() != solusiSnapshots.getChildrenCount()) {
+//                Solusi.getCollection().clear();
+//            }
+//            for (DataSnapshot solusiSnapshot : solusiSnapshots.getChildren()) {
+//                Solusi.put(Solusi.parse(solusiSnapshot));
+//            }
             DataSnapshot penyakitSnapshots = dataSnapshot.child("penyakit");
             if (Penyakit.getCollection().size() != penyakitSnapshots.getChildrenCount()) {
                 Penyakit.getCollection().clear();
