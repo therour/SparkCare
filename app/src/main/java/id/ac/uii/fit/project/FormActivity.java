@@ -7,10 +7,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import id.ac.uii.fit.project.models.Gejala;
+
 public class FormActivity extends Activity {
 
     private EditText namalengkapEdittext, umurEdittext, beratbadanEdittext, emailEdittext, teleponEdittext;
     private Button registerButton;
+
+    private static List<Gejala> gejala = new ArrayList<>();
+
+    public static void setGejala(List<Gejala> gejala) {
+        FormActivity.gejala = gejala;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

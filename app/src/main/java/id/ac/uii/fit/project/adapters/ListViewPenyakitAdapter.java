@@ -1,6 +1,7 @@
 package id.ac.uii.fit.project.adapters;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.ac.uii.fit.project.DetailPenyakitActivity;
+import id.ac.uii.fit.project.PenyakitActivity;
 import id.ac.uii.fit.project.R;
 import id.ac.uii.fit.project.models.Penyakit;
 
@@ -29,7 +32,7 @@ public class ListViewPenyakitAdapter extends ArrayAdapter implements Filterable 
         this.listPenyakit = listPenyakit;
     }
 
-    public View getView(int position, View view, @NonNull ViewGroup parent) {
+    public View getView(final int position, View view, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.listview_penyakit_row, null, true);
 
@@ -39,7 +42,14 @@ public class ListViewPenyakitAdapter extends ArrayAdapter implements Filterable 
         } else {
             rowView.setVisibility(View.GONE);
         }
-
+        rowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DetailPenyakitActivity.setPenyakit(listPenyakit.get(position));
+                Intent intent = new Intent(context, DetailPenyakitActivity.class);
+                context.startActivity(intent);
+            }
+        });
         return rowView;
     }
 
