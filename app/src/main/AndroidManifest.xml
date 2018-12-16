@@ -39,6 +39,9 @@
         <activity
             android:name=".DetailPenyakitActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FormActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

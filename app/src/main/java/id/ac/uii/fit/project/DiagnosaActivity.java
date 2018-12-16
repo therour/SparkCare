@@ -92,8 +92,8 @@ public class DiagnosaActivity extends BaseActivity {
             buttonSebelumnya.setVisibility(View.GONE);
         }
         questionText.setCurrentText("Loading ....");
-        questionText.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left));
-        questionText.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
+        questionText.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
+        questionText.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_out_left));
         questionProgressBar = (ProgressBar) findViewById(R.id.questionProgressBar);
         questionProgressBar.setMax(listGejala.size() -1);
         questionProgressBar.setProgress(currentQuestion + 1);
@@ -109,12 +109,15 @@ public class DiagnosaActivity extends BaseActivity {
         changeBackground();
         if (currentQuestion > 0) {
             currentQuestion--;
-            questionText.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
-            questionText.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_out_left));
-            questionProgressBar.setProgress(currentQuestion + 1);
-            showLoading(false);
             questionText.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left));
             questionText.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
+            questionProgressBar.setProgress(currentQuestion + 1);
+            showLoading(false);
+            questionText.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
+            questionText.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_out_left));
+            if (currentQuestion == 0) {
+                buttonSebelumnya.setVisibility(View.GONE);
+            }
         } else {
             finish();
         }
@@ -173,6 +176,9 @@ public class DiagnosaActivity extends BaseActivity {
             return true;
         } else {
             questionProgressBar.setProgress(currentQuestion);
+            if (buttonSebelumnya.getVisibility() != View.VISIBLE) {
+                buttonSebelumnya.setVisibility(View.VISIBLE);
+            }
             return false;
         }
     }
@@ -248,10 +254,23 @@ public class DiagnosaActivity extends BaseActivity {
 
     private void showForm() {
         disableAction(true,
-                "Tidak ada yang sama"
+                "Tidak ada penyakit yang sesuai\n" +
+                        "Mohon untuk memberikan data anda untuk ditindaklanjuti."
         );
         answerLinearLayout.setVisibility(View.GONE);
         questionProgressBar.setIndeterminate(false);
+        final Button buttonDetail = (Button) findViewById(R.id.buttonDetail);
+        buttonDetail.setText("Isi Data");
+        buttonDetail.setVisibility(View.VISIBLE);
+        buttonDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FormActivity.setGejala(answer);
+                Intent intent = new Intent(DiagnosaActivity.this, FormActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private Runnable responseRunnable(final String result) {
