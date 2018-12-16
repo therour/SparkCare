@@ -82,7 +82,8 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="@string/submit"/>
+            android:text="@string/submit"
+            android:onClick="actionSubmitForm"/>
 
     </LinearLayout>
 
