@@ -71,6 +71,10 @@ public class Penyakit {
 
     public String getDeskripsi() { return deskripsi; }
 
+    public List<String> getPengobatanDini() { return pengobatan_dini; }
+
+    public List<String> getPenyebab() { return penyebab; }
+
     public void setPengobatanDini(List<String> pengobatan_dini) { this.pengobatan_dini = pengobatan_dini; }
 
     public void setPenyebab(List<String> penyebab) {
