@@ -8,16 +8,23 @@
     android:background="#b2d8d9">
 
     <ImageView
+        android:layout_width="322dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="45dp"
+        android:contentDescription="@string/app_description"
+        app:srcCompat="@drawable/logo_tulisansamping" />
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="174dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="12dp"
         android:contentDescription="@string/app_description"
         app:srcCompat="@drawable/dokter" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:background="#C9D5DA"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
