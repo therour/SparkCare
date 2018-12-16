@@ -8,15 +8,15 @@
     android:background="#b2d8d9">
 
     <ImageView
-        android:layout_width="322dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="12dp"
         android:contentDescription="@string/app_description"
-        app:srcCompat="@drawable/logo_tulisansamping" />
+        app:srcCompat="@drawable/logo_terbaru" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="174dp"
+        android:layout_height="171dp"
         android:layout_marginTop="12dp"
         android:contentDescription="@string/app_description"
         app:srcCompat="@drawable/dokter" />
