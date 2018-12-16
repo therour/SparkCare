@@ -9,33 +9,38 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import id.ac.uii.fit.project.models.Gejala;
+import id.ac.uii.fit.project.models.Pasien;
 import id.ac.uii.fit.project.models.Penyakit;
 
 public class DatabaseService {
 
     public void sync() {
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-        db.addValueEventListener(new Listener());
+        DatabaseReference dbRefGejala = FirebaseDatabase.getInstance().getReference("gejala");
+        DatabaseReference dbRefPenyakit = FirebaseDatabase.getInstance().getReference("penyakit");
+        dbRefGejala.addValueEventListener(new GejalaEventListener());
+        dbRefPenyakit.addValueEventListener(new PenyakitEventListener());
     }
 
-    public class Listener implements ValueEventListener {
+    public class GejalaEventListener implements ValueEventListener {
         @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            DataSnapshot gejalaSnapshots = dataSnapshot.child("gejala");
+        public void onDataChange(@NonNull DataSnapshot gejalaSnapshots) {
             if (Gejala.getCollection().size() != gejalaSnapshots.getChildrenCount()) {
                 Gejala.getCollection().clear();
             }
             for (DataSnapshot gejalaSnapshot : gejalaSnapshots.getChildren()) {
                 Gejala.getCollection().add(Gejala.parse(gejalaSnapshot));
             }
-//            DataSnapshot solusiSnapshots = dataSnapshot.child("solusi");
-//            if (Solusi.getCollection().size() != solusiSnapshots.getChildrenCount()) {
-//                Solusi.getCollection().clear();
-//            }
-//            for (DataSnapshot solusiSnapshot : solusiSnapshots.getChildren()) {
-//                Solusi.put(Solusi.parse(solusiSnapshot));
-//            }
-            DataSnapshot penyakitSnapshots = dataSnapshot.child("penyakit");
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    }
+
+    public class PenyakitEventListener implements ValueEventListener {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot penyakitSnapshots) {
             if (Penyakit.getCollection().size() != penyakitSnapshots.getChildrenCount()) {
                 Penyakit.getCollection().clear();
             }
