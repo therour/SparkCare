@@ -9,7 +9,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import id.ac.uii.fit.project.models.Gejala;
-import id.ac.uii.fit.project.models.Pasien;
 import id.ac.uii.fit.project.models.Penyakit;
 
 public class DatabaseService {
