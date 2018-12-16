@@ -81,28 +81,28 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/buttonYes"
-            style="@style/AppTheme.yesButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:src="@drawable/icon_check"
-            android:background="@drawable/yes_button"
-            android:gravity="center"
-            android:onClick="actionYes"/>
-
-        <ImageButton
             android:id="@+id/buttonNo"
             style="@style/AppTheme.noButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:src="@drawable/icon_x"
             android:background="@drawable/no_button"
             android:gravity="center"
-            android:onClick="actionNo"
-            android:src="@drawable/icon_x"/>
+            android:onClick="actionNes"/>
+
+        <ImageButton
+            android:id="@+id/buttonYo"
+            style="@style/AppTheme.yesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/yes_button"
+            android:gravity="center"
+            android:onClick="actionYes"
+            android:src="@drawable/icon_check"/>
     </LinearLayout>
 
 
