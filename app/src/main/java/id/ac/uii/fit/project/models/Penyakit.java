@@ -11,18 +11,22 @@ public class Penyakit {
 
     private String kode;
     private String nama;
-    private Solusi solusi;
+    private String deskripsi;
+    private List<String> pengobatan_dini;
+    private List<String> penyebab;
 
     protected static Map<String, Penyakit> collection = new HashMap<>();
 
-    public Penyakit(String kode, String nama) {
+    public Penyakit(String kode, String nama, String deskripsi) {
         this.kode = kode;
         this.nama = nama;
+        this.deskripsi = deskripsi;
     }
 
-    public Penyakit(String kode, String nama, Solusi solusi) {
-        this(kode, nama);
-        this.solusi = solusi;
+    public Penyakit(String kode, String nama, String deskripsi, List<String> pengobatan_dini, List<String> penyebab) {
+        this(kode, nama, deskripsi);
+        this.pengobatan_dini = pengobatan_dini;
+        this.penyebab = penyebab;
     }
 
     public static Map<String, Penyakit> getCollection() { return Penyakit.collection; }
@@ -40,11 +44,20 @@ public class Penyakit {
     }
 
     public static Penyakit parse(DataSnapshot dataSnapshot) {
-        String kodeSolusi = dataSnapshot.child("solusi").getValue().toString();
+        List<String> listPenyebab = new ArrayList<>();
+        for (DataSnapshot sebabSnapshot : dataSnapshot.child("penyebab").getChildren()) {
+            listPenyebab.add(sebabSnapshot.getValue().toString());
+        }
+        List<String> listPengobatanDini = new ArrayList<>();
+        for (DataSnapshot pengobatanSnapshot : dataSnapshot.child("pengobatan_dini").getChildren()) {
+            listPengobatanDini.add(pengobatanSnapshot.getValue().toString());
+        }
         return new Penyakit(
                 dataSnapshot.getKey(),
                 dataSnapshot.child("nama").getValue().toString(),
-                Solusi.get(kodeSolusi)
+                dataSnapshot.child("deskripsi").getValue().toString(),
+                listPengobatanDini,
+                listPenyebab
         );
     }
 
@@ -56,11 +69,11 @@ public class Penyakit {
         return nama;
     }
 
-    public Solusi getSolusi() {
-        return solusi;
-    }
+    public String getDeskripsi() { return deskripsi; }
 
-    public void setSolusi(Solusi solusi) {
-        this.solusi = solusi;
+    public void setPengobatanDini(List<String> pengobatan_dini) { this.pengobatan_dini = pengobatan_dini; }
+
+    public void setPenyebab(List<String> penyebab) {
+        this.penyebab = penyebab;
     }
 }
