@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorBlack"
             android:background="@color/backgroundTheme"
             android:text="@string/formData" />
         
@@ -78,6 +78,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/submit"/>

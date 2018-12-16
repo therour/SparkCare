@@ -90,7 +90,7 @@
             android:src="@drawable/icon_x"
             android:background="@drawable/no_button"
             android:gravity="center"
-            android:onClick="actionNes"/>
+            android:onClick="actionNo"/>
 
         <ImageButton
             android:id="@+id/buttonYo"
