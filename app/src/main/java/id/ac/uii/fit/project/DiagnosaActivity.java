@@ -1,12 +1,24 @@
 package id.ac.uii.fit.project;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.Constraints;
+import android.support.v7.app.ActionBar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import id.ac.uii.fit.project.models.Gejala;
 import okhttp3.Call;
@@ -39,8 +52,11 @@ public class DiagnosaActivity extends BaseActivity {
     private boolean isLoading;
     private int currentQuestion = 0;
     public static List<Gejala> answer = new ArrayList<>();
-    private TextView questionText;
+    private TextSwitcher questionText;
     private LinearLayout answerLinearLayout;
+    private ProgressBar questionProgressBar;
+    private LinearLayout questionLayout;
+    String bgArray[] = {"#B2D9C2", "#B9B2D9", "#CBD9B2", "#D9C7B2", "#D9B2C6", "#D9B2B3", "#B5D9B2"};
 
     private String SOLVE_FUNCTION_URL = "https://us-central1-sparkcare-5e2bb.cloudfunctions.net/solve";
     private static final MediaType JSON_CONTENT_TYPE = MediaType.parse("application/json; charset=utf-8");
@@ -50,9 +66,28 @@ public class DiagnosaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diagnosa_activity);
         answer.clear();
-        answerLinearLayout = findViewById(R.id.answerLinearLayout);
-        questionText = (TextView) findViewById(R.id.question_text);
         listGejala = Gejala.getCollection();
+        answerLinearLayout = findViewById(R.id.answerLinearLayout);
+        questionText = (TextSwitcher) findViewById(R.id.question_text);
+        questionLayout = (LinearLayout) findViewById(R.id.questionLayout);
+        final LinearLayout qLayout = (LinearLayout) findViewById(R.id.questionLinearLayout);
+        questionText.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                TextView t = new TextView(DiagnosaActivity.this);
+                t.setGravity(Gravity.CENTER_VERTICAL);
+                t.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                t.setTextSize(30);
+                t.setMinHeight(250);
+                return t;
+            }
+        });
+        questionText.setCurrentText("Loading ....");
+        questionText.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left));
+        questionText.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
+        questionProgressBar = (ProgressBar) findViewById(R.id.questionProgressBar);
+        questionProgressBar.setMax(listGejala.size() -1);
+        questionProgressBar.setProgress(currentQuestion + 1);
         showLoading(false);
     }
 
@@ -62,8 +97,10 @@ public class DiagnosaActivity extends BaseActivity {
     }
 
     public void actionBack(View view) {
+        changeBackground();
         if (currentQuestion > 0) {
             currentQuestion--;
+            questionProgressBar.setProgress(currentQuestion + 1);
             showLoading(false);
         } else {
             finish();
@@ -71,8 +108,8 @@ public class DiagnosaActivity extends BaseActivity {
     }
 
     public void actionYes(View view) {
+        changeBackground();
         if (! isFinishedAction()) {
-            showLoading(true);
             Gejala gejala = listGejala.get(currentQuestion - 1);
             if (! answer.contains(gejala)) {
                 answer.add(gejala);
@@ -81,9 +118,16 @@ public class DiagnosaActivity extends BaseActivity {
         }
     }
 
+    private void changeBackground() {
+        Random i = new Random();
+        int c = i.nextInt(7-1) + 1;
+
+        questionLayout.setBackgroundColor(Color.parseColor(bgArray[c]));
+    }
+
     public void actionNo(View view) {
+        changeBackground();
         if (! isFinishedAction()) {
-            showLoading(true);
             Gejala gejala = listGejala.get(currentQuestion - 1);
             if (answer.contains(gejala)) {
                 answer.remove(gejala);
@@ -98,20 +142,23 @@ public class DiagnosaActivity extends BaseActivity {
 
     private void disableAction(Boolean hideYesOrNo, String text) {
         if (hideYesOrNo) {
+            questionProgressBar.setIndeterminate(true);
             questionText.setText(text);
             answerLinearLayout.setVisibility(View.INVISIBLE);
         } else {
+            questionProgressBar.setIndeterminate(false);
             questionText.setText(listGejala.get(currentQuestion).nama);
             answerLinearLayout.setVisibility(View.VISIBLE);
         }
     }
 
     private boolean isFinishedAction() {
-        if (listGejala.size() <= ++currentQuestion) {
+        if (++currentQuestion >= listGejala.size()) {
             showLoading(true);
             getResult(answer);
             return true;
         } else {
+            questionProgressBar.setProgress(currentQuestion);
             return false;
         }
     }
@@ -192,6 +239,7 @@ public class DiagnosaActivity extends BaseActivity {
                                         "\n dengan nilai kemiripan " + (nilaiPenyakit * 100) + " persen"
                         );
                         answerLinearLayout.setVisibility(View.GONE);
+                        questionProgressBar.setIndeterminate(false);
 
                     }
 

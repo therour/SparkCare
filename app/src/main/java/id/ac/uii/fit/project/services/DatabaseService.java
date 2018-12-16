@@ -1,31 +1,53 @@
 package id.ac.uii.fit.project.services;
 
+import android.support.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import id.ac.uii.fit.project.models.Gejala;
+import id.ac.uii.fit.project.models.Penyakit;
+import id.ac.uii.fit.project.models.Solusi;
 
 public class DatabaseService {
 
-    private static DatabaseReference db;
-    private static DatabaseReference dbGejala;
-    private static DatabaseService dbService;
-
-    private DatabaseService() {}
-
-    public static DatabaseReference ref() {
-        if (db != null) {
-            return db;
-        } else {
-            db = FirebaseDatabase.getInstance().getReference();
-            return db;
-        }
+    public void sync() {
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+        db.addValueEventListener(new Listener());
     }
 
-    public static DatabaseReference gejala() {
-        if (dbGejala != null) {
-            return dbGejala;
-        } else {
-            dbGejala = FirebaseDatabase.getInstance().getReference("gejala");
-            return dbGejala;
+    public class Listener implements ValueEventListener {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            DataSnapshot gejalaSnapshots = dataSnapshot.child("gejala");
+            if (Gejala.getCollection().size() != gejalaSnapshots.getChildrenCount()) {
+                Gejala.getCollection().clear();
+            }
+            for (DataSnapshot gejalaSnapshot : gejalaSnapshots.getChildren()) {
+                Gejala.getCollection().add(Gejala.parse(gejalaSnapshot));
+            }
+            DataSnapshot solusiSnapshots = dataSnapshot.child("solusi");
+            if (Solusi.getCollection().size() != solusiSnapshots.getChildrenCount()) {
+                Solusi.getCollection().clear();
+            }
+            for (DataSnapshot solusiSnapshot : solusiSnapshots.getChildren()) {
+                Solusi.put(Solusi.parse(solusiSnapshot));
+            }
+            DataSnapshot penyakitSnapshots = dataSnapshot.child("penyakit");
+            if (Penyakit.getCollection().size() != penyakitSnapshots.getChildrenCount()) {
+                Penyakit.getCollection().clear();
+            }
+            for (DataSnapshot penyakitSnapshot : penyakitSnapshots.getChildren()) {
+                Penyakit.put(Penyakit.parse(penyakitSnapshot));
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
         }
     }
 }

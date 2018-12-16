@@ -13,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import id.ac.uii.fit.project.models.Gejala;
 import id.ac.uii.fit.project.models.Penyakit;
 import id.ac.uii.fit.project.models.Solusi;
+import id.ac.uii.fit.project.services.DatabaseService;
 
 
 public class SplashApp extends Application {
@@ -20,10 +21,33 @@ public class SplashApp extends Application {
     @Override
     public void onCreate(){
         super.onCreate();
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        syncGejala();
-        syncPenyakit();
+//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+//        syncSolusi();
+//        syncGejala();
+//        syncPenyakit();
+        DatabaseService dbService = new DatabaseService();
+        dbService.sync();
         SystemClock.sleep(3000);
+    }
+
+    private void syncDatabaseFirebase() {
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                DataSnapshot gejalaSnapshots = dataSnapshot.child("gejala");
+                DataSnapshot solusiSnapshots = dataSnapshot.child("solusi");
+                DataSnapshot penyakitSnapshots = dataSnapshot.child("penyakit");
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void syncGejala() {
@@ -70,7 +94,6 @@ public class SplashApp extends Application {
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                syncSolusi();
                 Penyakit.getCollection().clear();
                 for (DataSnapshot penyakitSnapshot : dataSnapshot.getChildren()) {
                     Penyakit penyakit = Penyakit.parse(penyakitSnapshot);
