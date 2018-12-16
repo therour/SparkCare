@@ -66,22 +66,19 @@
         android:layout_weight="2"
         android:padding="5dp">
 
-        <Button
+        <ImageButton
             android:id="@+id/textView2"
             style="@style/AppTheme.yesButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:src="@drawable/icon_check"
             android:background="@drawable/yes_button"
-            android:fontFamily="@font/roboto_mono"
             android:gravity="center"
-            android:onClick="actionYes"
-            android:text="@string/yes"
-            android:textColor="@android:color/white"
-            android:textSize="36sp" />
+            android:onClick="actionYes"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/textView"
             style="@style/AppTheme.noButton"
             android:layout_width="0dp"
@@ -89,12 +86,9 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/no_button"
-            android:fontFamily="@font/roboto_mono"
             android:gravity="center"
             android:onClick="actionNo"
-            android:text="@string/no"
-            android:textColor="@android:color/white"
-            android:textSize="36sp" />
+            android:src="@drawable/icon_x"/>
     </LinearLayout>
 
 
