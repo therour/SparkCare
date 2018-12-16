@@ -134,4 +134,5 @@
     <string name="penyebab">Penyebab</string>
     <string name="pengobatan">Pengobatan</string>
     <string name="deskripsi">Deskripsi</string>
+    <string name="detail_penyakit">Detail Penyakit</string>
 </resources>

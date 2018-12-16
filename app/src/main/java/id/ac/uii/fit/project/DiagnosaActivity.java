@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextSwitcher;
@@ -35,6 +37,7 @@ import java.util.Map;
 import java.util.Random;
 
 import id.ac.uii.fit.project.models.Gejala;
+import id.ac.uii.fit.project.models.Penyakit;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -56,6 +59,8 @@ public class DiagnosaActivity extends BaseActivity {
     private LinearLayout answerLinearLayout;
     private ProgressBar questionProgressBar;
     private LinearLayout questionLayout;
+    private TextView buttonSebelumnya;
+
     String bgArray[] = {"#B2D9C2", "#B9B2D9", "#CBD9B2", "#D9C7B2", "#D9B2C6", "#D9B2B3", "#B5D9B2"};
 
     private String SOLVE_FUNCTION_URL = "https://us-central1-sparkcare-5e2bb.cloudfunctions.net/solve";
@@ -70,6 +75,7 @@ public class DiagnosaActivity extends BaseActivity {
         answerLinearLayout = findViewById(R.id.answerLinearLayout);
         questionText = (TextSwitcher) findViewById(R.id.question_text);
         questionLayout = (LinearLayout) findViewById(R.id.questionLayout);
+        buttonSebelumnya = (TextView) findViewById(R.id.buttonSebelumnya);
         final LinearLayout qLayout = (LinearLayout) findViewById(R.id.questionLinearLayout);
         questionText.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
@@ -82,6 +88,9 @@ public class DiagnosaActivity extends BaseActivity {
                 return t;
             }
         });
+        if (currentQuestion == 0) {
+            buttonSebelumnya.setVisibility(View.GONE);
+        }
         questionText.setCurrentText("Loading ....");
         questionText.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left));
         questionText.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
@@ -100,8 +109,12 @@ public class DiagnosaActivity extends BaseActivity {
         changeBackground();
         if (currentQuestion > 0) {
             currentQuestion--;
+            questionText.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
+            questionText.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_out_left));
             questionProgressBar.setProgress(currentQuestion + 1);
             showLoading(false);
+            questionText.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left));
+            questionText.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
         } else {
             finish();
         }
@@ -147,7 +160,7 @@ public class DiagnosaActivity extends BaseActivity {
             answerLinearLayout.setVisibility(View.INVISIBLE);
         } else {
             questionProgressBar.setIndeterminate(false);
-            questionText.setText(listGejala.get(currentQuestion).nama);
+            questionText.setText(listGejala.get(currentQuestion).kode + ". " + listGejala.get(currentQuestion).nama);
             answerLinearLayout.setVisibility(View.VISIBLE);
         }
     }
@@ -156,6 +169,7 @@ public class DiagnosaActivity extends BaseActivity {
         if (++currentQuestion >= listGejala.size()) {
             showLoading(true);
             getResult(answer);
+            buttonSebelumnya.setVisibility(View.GONE);
             return true;
         } else {
             questionProgressBar.setProgress(currentQuestion);
@@ -178,6 +192,7 @@ public class DiagnosaActivity extends BaseActivity {
 
         String json = gson.toJson(data);
         RequestBody requestBody = RequestBody.create(JSON_CONTENT_TYPE, json);
+        System.out.println(json);
         Request request = new Request.Builder().url(httpBuilder.build()).post(requestBody).build();
 
         httpClient.newCall(request).enqueue(new Callback() {
@@ -212,42 +227,52 @@ public class DiagnosaActivity extends BaseActivity {
         });
     }
 
+    private void showResult(final Penyakit penyakit) {
+        disableAction(true,
+                "Anda terindikasi memiliki penyakit\n\n" + penyakit.getNama()
+        );
+        answerLinearLayout.setVisibility(View.GONE);
+        questionProgressBar.setIndeterminate(false);
+        final Button buttonDetail = (Button) findViewById(R.id.buttonDetail);
+        buttonDetail.setVisibility(View.VISIBLE);
+        buttonDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DetailPenyakitActivity.setPenyakit(penyakit);
+                Intent intent = new Intent(DiagnosaActivity.this, DetailPenyakitActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    private void showForm() {
+        disableAction(true,
+                "Tidak ada yang sama"
+        );
+        answerLinearLayout.setVisibility(View.GONE);
+        questionProgressBar.setIndeterminate(false);
+    }
+
     private Runnable responseRunnable(final String result) {
         return new Runnable() {
             @Override
             public void run() {
-                final Map<String, String> listPenyakit = new HashMap<>();
-                DatabaseReference dbPenyakit = FirebaseDatabase.getInstance().getReference("penyakit");
-                dbPenyakit.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        listPenyakit.clear();
-                        String namaPenyakit = "";
-                        for (DataSnapshot penyakitSnapshot: dataSnapshot.getChildren()) {
-                            Map<String, String> penyakit = new HashMap<>();
-                            listPenyakit.put(penyakitSnapshot.getKey(), penyakitSnapshot.child("nama").getValue().toString());
-                        }
-                        Gson gson = new Gson();
-                        Map resultMap = new HashMap<>();
-                        resultMap = gson.fromJson(result, resultMap.getClass());
-                        namaPenyakit = listPenyakit.get(resultMap.get("penyakit").toString());
-                        float nilaiPenyakit = Float.parseFloat(resultMap.get("result").toString());
+                Gson gson = new Gson();
+                Map resultMap = gson.fromJson(result, HashMap.class);
 
+                Penyakit penyakit = Penyakit.get(resultMap.get("penyakit").toString());
+                float nilaiPenyakit = Float.parseFloat(resultMap.get("result").toString());
 
-                        disableAction(true,
-                                "Penyakit anda adalah " + namaPenyakit +
-                                        "\n dengan nilai kemiripan " + (nilaiPenyakit * 100) + " persen"
-                        );
-                        answerLinearLayout.setVisibility(View.GONE);
-                        questionProgressBar.setIndeterminate(false);
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                if (nilaiPenyakit > Float.parseFloat(resultMap.get("threshold").toString())) {
+                    System.out.println("Diatas Threshold");
+                    System.out.println(penyakit.getNama());
+                    showResult(penyakit);
+                } else {
+                    System.out.println("Tidak ada yang sama");
+                    System.out.println(answer);
+                    showForm();
+                }
             }
         };
     }
