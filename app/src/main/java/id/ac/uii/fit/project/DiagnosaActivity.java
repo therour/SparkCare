@@ -32,6 +32,8 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +75,12 @@ public class DiagnosaActivity extends BaseActivity {
         setContentView(R.layout.diagnosa_activity);
         answer.clear();
         listGejala = Gejala.getCollection();
+        Collections.sort(listGejala, new Comparator<Gejala>() {
+            @Override
+            public int compare(Gejala gejala, Gejala t1) {
+                return gejala.number - t1.number;
+            }
+        });
         answerLinearLayout = findViewById(R.id.answerLinearLayout);
         questionText = (TextSwitcher) findViewById(R.id.question_text);
         questionLayout = (LinearLayout) findViewById(R.id.questionLayout);
@@ -199,7 +207,6 @@ public class DiagnosaActivity extends BaseActivity {
 
         String json = gson.toJson(data);
         RequestBody requestBody = RequestBody.create(JSON_CONTENT_TYPE, json);
-        System.out.println(json);
         Request request = new Request.Builder().url(httpBuilder.build()).post(requestBody).build();
 
         httpClient.newCall(request).enqueue(new Callback() {
@@ -285,12 +292,8 @@ public class DiagnosaActivity extends BaseActivity {
                 float nilaiPenyakit = Float.parseFloat(resultMap.get("result").toString());
 
                 if (nilaiPenyakit > Float.parseFloat(resultMap.get("threshold").toString())) {
-                    System.out.println("Diatas Threshold");
-                    System.out.println(penyakit.getNama());
                     showResult(penyakit);
                 } else {
-                    System.out.println("Tidak ada yang sama");
-                    System.out.println(answer);
                     showForm();
                 }
             }

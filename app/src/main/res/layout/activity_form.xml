@@ -63,15 +63,6 @@
             android:hint="@string/noTelp"
             tools:ignore="Autofill"/>
 
-        <EditText
-            android:id="@+id/gejala_pasien"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:inputType="text"
-            android:hint="Masukkan gejala-gejala yang anda alami"
-            tools:ignore="Autofill"/>
-
         <Button
             android:id="@+id/register_button"
             android:layout_width="match_parent"
@@ -80,7 +71,8 @@
             android:paddingBottom="10dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="@string/submit"/>
+            android:text="@string/submit"
+            android:onClick="actionSubmitForm"/>
 
     </LinearLayout>
 

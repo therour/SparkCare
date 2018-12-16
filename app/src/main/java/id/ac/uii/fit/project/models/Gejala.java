@@ -14,11 +14,14 @@ public class Gejala {
 
     public String nama;
     public String kode;
+    public int number;
     protected static List<Gejala> collection = new ArrayList<>();
 
     public Gejala(String kode, String nama) {
         this.kode = kode;
         this.nama = nama;
+        this.number = Integer.parseInt(kode.substring(1));
+        System.out.println(this.number);
     }
 
     @Exclude
