@@ -9,7 +9,7 @@
 
     <ImageView
         android:layout_width="322dp"
-        android:layout_height="98dp"
+        android:layout_height="150dp"
         android:layout_marginStart="45dp"
         android:contentDescription="@string/app_description"
         app:srcCompat="@drawable/logo_tulisansamping" />
