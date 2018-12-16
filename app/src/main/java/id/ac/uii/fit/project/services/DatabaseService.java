@@ -13,9 +13,15 @@ import id.ac.uii.fit.project.models.Penyakit;
 
 public class DatabaseService {
 
+    public DatabaseService() {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    }
+
     public void sync() {
         DatabaseReference dbRefGejala = FirebaseDatabase.getInstance().getReference("gejala");
+        dbRefGejala.keepSynced(true);
         DatabaseReference dbRefPenyakit = FirebaseDatabase.getInstance().getReference("penyakit");
+        dbRefPenyakit.keepSynced(true);
         dbRefGejala.addValueEventListener(new GejalaEventListener());
         dbRefPenyakit.addValueEventListener(new PenyakitEventListener());
     }

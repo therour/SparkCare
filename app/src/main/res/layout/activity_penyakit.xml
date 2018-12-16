@@ -9,10 +9,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@color/backgroundTheme"
         android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:focusable="true"
+        android:elevation="4dp"
         android:focusableInTouchMode="true">
         <ImageView
             android:layout_width="40dp"
@@ -20,17 +25,17 @@
             android:layout_weight="0"
             app:srcCompat="@android:drawable/ic_menu_search"
             android:contentDescription="@string/desc" />
-    <EditText
-        android:id="@+id/editTxtCariPenyakit"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:hint="@string/cari_penyakit"
-        android:inputType="text"
-        android:nextFocusUp="@+id/editTxtCariPenyakit"
-        android:nextFocusLeft="@+id/editTxtCariPenyakit"/>
+        <EditText
+            android:id="@+id/editTxtCariPenyakit"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:hint="@string/cari_penyakit"
+            android:inputType="text"
+            android:nextFocusUp="@+id/editTxtCariPenyakit"
+            android:nextFocusLeft="@+id/editTxtCariPenyakit"/>
     </LinearLayout>
     <ListView
         android:id="@+id/listViewPenyakit"

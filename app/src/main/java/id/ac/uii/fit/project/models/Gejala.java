@@ -21,7 +21,6 @@ public class Gejala {
         this.kode = kode;
         this.nama = nama;
         this.number = Integer.parseInt(kode.substring(1));
-        System.out.println(this.number);
     }
 
     @Exclude

@@ -11,19 +11,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="@color/colorSecondary"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp">
+        android:elevation="4dp">
 
         <TextView
             android:id="@+id/buttonSebelumnya"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:drawableStart="@drawable/ic_chevron_left"
-            android:fontFamily="@font/roboto_mono"
+            android:fontFamily="@font/roboto"
             android:gravity="center_vertical"
             android:onClick="actionBack"
+            android:layout_marginStart="20dp"
             android:text="@string/undo" />
 
         <TextView
@@ -33,18 +33,19 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:drawableEnd="@drawable/ic_chevron_right"
-            android:fontFamily="@font/roboto_mono"
+            android:fontFamily="@font/roboto"
             android:gravity="center_vertical"
             android:onClick="actionMyAnswer"
+            android:layout_marginEnd="20dp"
             android:text="@string/your_answer" />
-    </RelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/questionProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"/>
+        <ProgressBar
+            android:id="@+id/questionProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/questionLinearLayout"
